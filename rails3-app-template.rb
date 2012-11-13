@@ -1,4 +1,4 @@
-puts "Modifying existing Rails app..."
+puts "Modifying a freshly created Rails app..."
 
 puts "Adding gems..."
 gem 'less-rails'
