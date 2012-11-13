@@ -5,7 +5,12 @@ An evolving set of the gems and patterns I currently use for Rails 3 development
 ## Usage
 
 ```
-rails new APP_NAME -m http://git.io/JYYmwg --skip-bundle
+$ rails new APP_NAME --skip-bundle
+$ cd APP_NAME
+...
+edit config/database.yml, db/seed.rb, etc.
+...
+$ rake rails:template LOCATION=http://git.io/JYYmwg
 ```
 
 ## Gems
