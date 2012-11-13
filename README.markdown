@@ -1,6 +1,8 @@
 # A Rails 3 Application Template
 
-An evolving set of the gems and patterns I currently use for Rails 3 development.  Inspired by [https://github.com/defeated/rails-app-template](https://github.com/defeated/rails-app-template) and [https://github.com/npverni/rails3-rumble-template](https://github.com/npverni/rails3-rumble-template)
+An evolving set of the gems and patterns I currently use for Rails 3 development.  
+
+Inspired by [https://github.com/defeated/rails-app-template](https://github.com/defeated/rails-app-template) and [https://github.com/npverni/rails3-rumble-template](https://github.com/npverni/rails3-rumble-template)
 
 ## Usage
 After creating a new Rails app, and updating `config/database.yml`, run the following:
