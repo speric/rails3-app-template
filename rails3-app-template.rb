@@ -12,6 +12,7 @@ end
 gem_group :development do
   gem 'sextant', '~> 0.1.3'
   gem 'quiet_assets', '~> 1.0.1'
+  gem 'thin'
 end
 
 puts "Installing gems..."
