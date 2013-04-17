@@ -58,6 +58,7 @@ run "rm -f db/migrate/*.rb"
 generate(:controller, "Users")
 generate(:controller, "UserSessions")
 
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/application_controller.rb", "app/controllers/application_controller.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/models/user.rb", "app/models/user.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/users_controller.rb", "app/controllers/users_controller.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/_form.erb", "app/views/users/_form.erb"

@@ -10,6 +10,8 @@ After creating a new Rails app, and updating `config/database.yml`, run the foll
 $ rake rails:template LOCATION=http://git.io/JYYmwg
 ```
 
+Go to `http://localhost:3000`; the default admin username/pass is `foo@bar.com`/`password`.
+
 ## Gems
 
   * [authlogic](https://github.com/binarylogic/authlogic)
