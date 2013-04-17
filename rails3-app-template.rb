@@ -89,12 +89,11 @@ remove_file "README.rdoc"
 create_file "README.markdown"
 
 puts "===> Appending .gitignore..."
-append_file '.gitignore' do <<-FILE
+append_file '.gitignore' do <<-EOS
 '.DS_Store'
 '.rvmrc'
 '/config/database.yml'
-FILE
-end
+EOS
 
 #----------------------------------------------------------------------------
 # Some sensible default routes
@@ -112,6 +111,6 @@ route("root :to => 'users#edit'")
 puts "===> Initializing git and making first commit..."
 git :init
 git :add => "."
-git :commit => %Q{ -am 'Initial commit' }
+git :commit => "-am 'Initial commit'"
 
 puts "FINISHED"

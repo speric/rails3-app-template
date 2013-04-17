@@ -7,7 +7,7 @@ Inspired by [https://github.com/defeated/rails-app-template](https://github.com/
 ## Usage
 After creating a new Rails app, and updating `config/database.yml`, run the following:
 ```
-$ rake rails:template LOCATION=http://git.io/ufc4gg
+$ rake rails:template LOCATION=https://raw.github.com/speric/rails3-app-template/master/rails3-app-template.rb
 ```
 
 Go to `http://localhost:3000`; the default admin username/pass is `foo@bar.com`/`password`.
