@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+  <%= render "shared/form_errors", :object => @user %>
+
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <div class="form-actions">
+	  <%= f.submit 'Update Profile', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

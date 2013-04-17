@@ -1,0 +1,25 @@
+<h1>Login</h1>
+
+<%= form_for @user_session, :url => user_sessions_path do |f| %>
+	<fieldset>
+		<%= render "shared/form_errors", :object => @user_session %>
+		
+		<div class="control-group">
+	     <%= f.label :email_address, :class => 'control-label' %>
+	     <div class="controls">
+	       <%= f.text_field :email_address, :class => 'text_field' %>
+	     </div>
+	   </div>
+	
+		<div class="control-group">
+      <%= f.label :password, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password, :class => 'text_field' %>
+      </div>
+    </div>
+
+  	<div class="form-actions">
+    	<%= f.submit 'Sign In', :class => 'btn btn-primary' %>
+  	</div>
+	</fieldset>
+<% end %>

@@ -1,0 +1,19 @@
+<h2>Users</h2>
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Created</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email_address %></td>
+      <td><%= user.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @users %>

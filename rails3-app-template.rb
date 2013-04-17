@@ -1,45 +1,63 @@
-puts "Modifying a freshly created Rails app..."
+# copied from https://raw.github.com/RailsApps/rails3-application-templates/master/rails3-subdomains-template.rb
+def copy_from(source, destination)
+  begin
+    remove_file destination
+    get source, destination
+  rescue OpenURI::HTTPError
+    puts "Unable to obtain #{source}"
+  end
+end
 
+puts "Creating a new Rails 3 app..."
 puts "Adding gems..."
-gem 'less-rails'
+
+gem 'authlogic'
+gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate'
 
-group :assets do
-  gem 'therubyracer', :platforms => :ruby
-end
+gem 'coffee-rails', '~> 3.2.1', :group => "assets"
+gem 'uglifier', '>= 1.0.3', :group => "assets"
 
-gem_group :development do
-  gem 'sextant', '~> 0.1.3'
-  gem 'quiet_assets', '~> 1.0.1'
-  gem 'thin'
-end
+gem 'thin', :group => "development"
+gem 'quiet_assets', :group => "development"
+gem 'sextant', :group => "development"
 
 puts "Installing gems..."
 run "bundle install"
-
-
-puts "Creating README.markdown..."
-remove_file "README.rdoc"
-create_file "README.markdown"
 
 puts "Removing unnecessary default files..."
 remove_file "public/index.html"
 remove_file "app/assets/images/rails.png"
 
-
 puts "Installing Bootstrap..."
-run "rails g bootstrap:install"
+run "rails generate bootstrap:install static"
+# add 60 pix to body
+
+puts "Generating User MVC"
+generate(:model, "User")
+generate(:controller, "Users")
+copy_from
+#model
+#controller
+#views
+#migration
+
+puts "Generating UserSession MVC"
+generate(:model, "UserSession")
+generate(:controller, "UserSessions")
 
 puts "Creating database..."
 rake "db:create:all"
-
-#authlogic stuff
 
 puts "Running migrations..."
 rake "db:migrate"
 rake "db:seed"
 rake "db:test:prepare"
+
+puts "Creating README.markdown..."
+remove_file "README.rdoc"
+create_file "README.markdown"
 
 puts "Appending .gitignore..."
 append_file '.gitignore' do <<-FILE
@@ -53,3 +71,5 @@ puts "Initializing git and making first commit..."
 git :init
 git :add => "."
 git :commit => %Q{ -am 'Initial commit' }
+
+puts "Done."
