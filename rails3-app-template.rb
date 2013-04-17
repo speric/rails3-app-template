@@ -37,15 +37,21 @@ run "rails generate bootstrap:install static"
 puts "Generating User MVC"
 generate(:model, "User")
 generate(:controller, "Users")
-copy_from
-#model
-#controller
-#views
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/models/user.rb", "app/models/user.rb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/users_controller.rb", "app/controllers/users_controller.rb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/_form.erb", "app/views/users/_form.erb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/edit.html.erb", "app/views/users/edit.html.erb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/new.html.erb", "app/views/users/new.html.erb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/index.html.erb", "app/views/users/index.html.erb"
+
 #migration
 
 puts "Generating UserSession MVC"
 generate(:model, "UserSession")
 generate(:controller, "UserSessions")
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/models/user_session.rb", "app/models/user_session.rb"
+
+#copy seeds
 
 puts "Creating database..."
 rake "db:create:all"
