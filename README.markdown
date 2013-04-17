@@ -5,14 +5,15 @@ An evolving set of the gems and patterns I currently use for Rails 3 development
 Inspired by [https://github.com/defeated/rails-app-template](https://github.com/defeated/rails-app-template) and [https://github.com/npverni/rails3-rumble-template](https://github.com/npverni/rails3-rumble-template)
 
 ## Usage
+After creating a new Rails app, and updating `config/database.yml`, run the following:
 ```
-$ rails new YOUR_APP -Tm http://git.io/JYYmwg --skip-bundle
+$ rake rails:template LOCATION=http://git.io/JYYmwg
 ```
 
 ## Gems
 
-  * [authlogic](https://github.com/binarylogic/authlogic) - creates User and UserSession models, views, controllers (with actions), routes, and migrations
-  * [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails) - installs Bootstrap, generates a fixed-layout application layout
+  * [authlogic](https://github.com/binarylogic/authlogic)
+  * [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails)
   * [will_paginate](https://github.com/mislav/will_paginate)
 
 ### Development
