@@ -1,4 +1,3 @@
-# copied from https://raw.github.com/RailsApps/rails3-application-templates/master/rails3-subdomains-template.rb
 def copy_from(source, destination)
   begin
     remove_file destination
@@ -9,17 +8,19 @@ def copy_from(source, destination)
 end
 
 #----------------------------------------------------------------------------
+# Create DBs
+#----------------------------------------------------------------------------
+puts "===> Creating database"
+rake "db:create:all"
+
+#----------------------------------------------------------------------------
 # Add and install gems
 #----------------------------------------------------------------------------
 puts "===> Adding gems"
 
 gem 'authlogic'
-gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
-
-gem 'coffee-rails', :group => "assets"
-gem 'uglifier', :group => "assets"
 
 gem 'thin', :group => "development"
 gem 'quiet_assets', :group => "development"
@@ -46,9 +47,10 @@ copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/sh
 append_file 'app/assets/stylesheets/bootstrap_and_overrides.css' do <<-EOS
 body { padding-top: 60px; }
 EOS
+end
 
 #----------------------------------------------------------------------------
-# Generate User/UserSession, copy controllers, views, models, migrations
+# Create User and UserSession models, grab from GitHub
 #----------------------------------------------------------------------------
 puts "===> Generating User and UserSession MVC"
 generate(:model, "User")
@@ -58,6 +60,7 @@ run "rm -f db/migrate/*.rb"
 generate(:controller, "Users")
 generate(:controller, "UserSessions")
 
+puts "===> Grabbing files from GitHub"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/application_controller.rb", "app/controllers/application_controller.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/models/user.rb", "app/models/user.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/users_controller.rb", "app/controllers/users_controller.rb"
@@ -67,17 +70,14 @@ copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/us
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/users/index.html.erb", "app/views/users/index.html.erb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/db/migrate/20130417125112_create_users.rb", "db/migrate/20130417125112_create_users.rb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/app/models/user_session.rb", "app/models/user_session.rb"
-copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/users_sessions_controller.rb", "app/controllers/users_sessions_controller.rb"
-copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/user_sessions/new.html.erb", "app/views/users/new.html.erb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/controllers/user_sessions_controller.rb", "app/controllers/user_sessions_controller.rb"
+copy_from "https://raw.github.com/speric/rails3-app-template/master/app/views/user_sessions/new.html.erb", "app/views/user_sessions/new.html.erb"
 copy_from "https://raw.github.com/speric/rails3-app-template/master/db/seeds.rb", "db/seeds.rb"
 
 #----------------------------------------------------------------------------
 # Run migrations
 #----------------------------------------------------------------------------
-puts "===> Creating database"
-rake "db:create:all"
-
-puts "Running migrations"
+puts "===> Running migrations"
 rake "db:migrate"
 rake "db:seed"
 
@@ -94,6 +94,7 @@ append_file '.gitignore' do <<-EOS
 '.rvmrc'
 '/config/database.yml'
 EOS
+end
 
 #----------------------------------------------------------------------------
 # Some sensible default routes
@@ -113,4 +114,4 @@ git :init
 git :add => "."
 git :commit => "-am 'Initial commit'"
 
-puts "FINISHED"
+puts "===> FINISHED. Start the server with 'rails server', navigate to http://localhost:3000, log in with foo@bar.com/password"
