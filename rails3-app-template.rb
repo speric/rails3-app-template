@@ -21,6 +21,7 @@ puts "===> Adding gems"
 gem 'authlogic'
 gem 'twitter-bootstrap-rails'
 gem 'will_paginate'
+gem 'peek'
 
 gem 'thin', :group => "development"
 gem 'quiet_assets', :group => "development"
